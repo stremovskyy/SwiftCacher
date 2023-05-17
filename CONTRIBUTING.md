@@ -1,10 +1,10 @@
-# Contributing to [Cacher]
+# Contributing to [SwiftCacher]
 
-Thank you for considering contributing to [Cacher]! We appreciate your time and effort in helping us improve the project. This document outlines the guidelines and steps for contributing.
+Thank you for considering contributing to [SwiftCacher]! We appreciate your time and effort in helping us improve the project. This document outlines the guidelines and steps for contributing.
 
 ## Bug Reports and Feature Requests
 
-If you encounter any bugs or have ideas for new features, please search the [GitHub Issues](https://github.com/stremovskyy/cacher/issues) to check if the issue or feature request has already been reported. If not, you can open a new issue and provide as much detail as possible, including steps to reproduce the bug or a clear description of the new feature.
+If you encounter any bugs or have ideas for new features, please search the [GitHub Issues](https://github.com/stremovskyy/SwiftCacher/issues) to check if the issue or feature request has already been reported. If not, you can open a new issue and provide as much detail as possible, including steps to reproduce the bug or a clear description of the new feature.
 
 ## Pull Requests
 
@@ -35,11 +35,11 @@ We expect all contributors to abide by our [Code of Conduct](CODE_OF_CONDUCT.md)
 
 ## License
 
-By contributing to [Cacher], you agree that your contributions will be licensed under the [LICENSE](LICENSE) file of the project.
+By contributing to [SwiftCacher], you agree that your contributions will be licensed under the [LICENSE](LICENSE) file of the project.
 
 ## Contact
 
 If you have any questions or need further assistance, feel free to reach out to us at email
 
-We appreciate your contributions and look forward to your involvement in improving [Cacher]!
+We appreciate your contributions and look forward to your involvement in improving [SwiftCacher]!
 

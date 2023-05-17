@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Cacher {
+public struct SwiftCacher {
     private let cacheDirectory: URL
 
     init() {

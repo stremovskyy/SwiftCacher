@@ -1,6 +1,6 @@
-# Cacher
+# SwiftCacher
 
-Cacher is a Swift package that provides a simple key-value caching mechanism with persistence. It allows you to store objects in a cache directory on disk, making them easily retrievable for future use.
+SwiftCacher is a Swift package that provides a simple key-value caching mechanism with persistence. It allows you to store objects in a cache directory on disk, making them easily retrievable for future use.
 
 ## Features
 
@@ -18,23 +18,23 @@ Cacher is a Swift package that provides a simple key-value caching mechanism wit
 
 ## Installation
 
-You can integrate Cacher into your Swift project using Swift Package Manager.
+You can integrate SwiftCacher into your Swift project using Swift Package Manager.
 
 1. Open your project in Xcode.
 2. Select your project in the Project Navigator.
 3. Select the "Swift Packages" tab.
 4. Click the "+" button to add a package dependency.
-5. Enter the URL of this repository: [https://github.com/stremovskyy/cacher.git](https://github.com/stremovskyy/cacher.git)
+5. Enter the URL of this repository: [https://github.com/stremovskyy/SwiftCacher.git](https://github.com/stremovskyy/SwiftCacher.git)
 6. Choose the desired version or branch.
 7. Click "Next" and follow the Xcode instructions to complete the installation.
 
 ## Usage
 
 ```swift
-import Cacher
+import SwiftCacher
 
 // Create an instance of the cache
-let cache = Cacher()
+let cache = SwiftCacher()
 
 // Store an object in the cache
 let objectToCache = MyObject(name: "John Doe")
@@ -56,7 +56,7 @@ cache.removeAllObjects()
 
 ## Precautions
 
-Cacher uses the `NSKeyedArchiver` and `NSKeyedUnarchiver` classes to serialize and deserialize objects. 
+SwiftCacher uses the `NSKeyedArchiver` and `NSKeyedUnarchiver` classes to serialize and deserialize objects. 
 
 This means that all objects that you want to store in the cache must conform to the `NSSecureCoding` protocol.
 For more information, see [Archives and Serializations Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Archiving/Archiving.html) and [NSSecureCoding](https://developer.apple.com/documentation/foundation/nssecurecoding).
@@ -80,7 +80,7 @@ class MyObject: NSObject, NSSecureCoding {
 
 ## License
 
-Cacher is released under the MIT license. See [LICENSE](LICENSE) for details.
+SwiftCacher is released under the MIT license. See [LICENSE](LICENSE) for details.
 
 ## Contributing
 
@@ -89,4 +89,4 @@ If you have any ideas, suggestions, or bug reports, please open an issue or subm
 
 ## Acknowledgements
 
-Cacher is inspired by the need for a simple and efficient caching mechanism in Swift projects. It aims to provide an easy-to-use solution for storing and retrieving objects with persistence.
+SwiftCacher is inspired by the need for a simple and efficient caching mechanism in Swift projects. It aims to provide an easy-to-use solution for storing and retrieving objects with persistence.

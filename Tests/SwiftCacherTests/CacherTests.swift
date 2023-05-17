@@ -1,11 +1,11 @@
 import XCTest
-@testable import Cacher
+@testable import SwiftCacher
 
-final class CacherTests: XCTestCase {
-    func testExample() throws {
+final class SwiftCacherTests: XCTestCase {
+    func testBasic() throws {
 
         // Create a cache instance
-        let cache = Cacher()
+        let cache = SwiftCacher()
 
         // Cache an object
         let myObject = MyObject(name: "Cached Object")
