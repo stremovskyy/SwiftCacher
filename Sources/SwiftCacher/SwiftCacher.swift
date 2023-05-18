@@ -3,7 +3,7 @@ import Foundation
 public struct SwiftCacher {
     private let cacheDirectory: URL
 
-    init() {
+    public init() {
         // Create a directory for the cache
         let cacheDirectoryName = "CacheDirectory"
         let fileManager = FileManager.default
