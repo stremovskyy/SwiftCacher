@@ -9,6 +9,7 @@ SwiftCacher is a Swift package that provides a simple key-value caching mechanis
 - Retrieve objects from the cache.
 - Remove specific objects from the cache.
 - Remove all objects from the cache.
+- Remove expired objects from the cache.
 
 ## Requirements
 
@@ -34,34 +35,53 @@ You can integrate SwiftCacher into your Swift project using Swift Package Manage
 import SwiftCacher
 
 // Create an instance of the cache
-let cache = SwiftCacher()
+let cache = try SwiftCacher()
 
 // Store an object in the cache
 let objectToCache = MyObject(name: "John Doe")
-cache.setObject(objectToCache, forKey: "user")
+try cache.setObject(objectToCache, forKey: "user")
 
 // Retrieve the object from the cache
-if let cachedObject: MyObject = cache.getObject(forKey: "user") {
-    print("Cached object: \(cachedObject)")
-} else {
-    print("Object not found in the cache.")
+do {
+    if let cachedObject: MyObject = try cache.getObject(forKey: "user") {
+        print("Cached object: \(cachedObject)")
+    } else {
+        print("Object not found in the cache.")
+    }
+} catch {
+    print("Failed to retrieve cached object: \(error)")
 }
 
 // Remove the object from the cache
-cache.removeObject(forKey: "user")
+do {
+    try cache.removeObject(forKey: "user")
+} catch {
+    print("Failed to remove object from cache: \(error)")
+}
 
 // Remove all objects from the cache
-cache.removeAllObjects()
+do {
+    try cache.removeAllObjects()
+} catch {
+    print("Failed to remove all objects from cache: \(error)")
+}
+
+// Remove expired objects from the cache
+do {
+    try cache.removeExpired()
+} catch {
+    print("Failed to remove expired objects from cache: \(error)")
+}
 ```
 
 ## Precautions
 
-SwiftCacher uses the `NSKeyedArchiver` and `NSKeyedUnarchiver` classes to serialize and deserialize objects. 
+ - SwiftCacher uses the `NSKeyedArchiver` and `NSKeyedUnarchiver` classes to serialize and deserialize objects. 
 
-This means that all objects that you want to store in the cache must conform to the `NSSecureCoding` protocol.
+>This means that all objects that you want to store in the cache must conform to the `NSSecureCoding` protocol.
 For more information, see [Archives and Serializations Programming Guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Archiving/Archiving.html) and [NSSecureCoding](https://developer.apple.com/documentation/foundation/nssecurecoding).
 
-In other words, you need to implement the following methods in your object:
+> In other words, you need to implement the following methods in your object:
 
 ```swift
 class MyObject: NSObject, NSSecureCoding {
@@ -76,6 +96,14 @@ class MyObject: NSObject, NSSecureCoding {
     }
 }
 ```
+
+- SwiftCacher uses the `FileManager` class to create a cache directory on disk.
+
+> This means that you need to add the `NSFileProtectionKey` key to your app's `Info.plist` file to protect the cache directory with data protection. For more information, see [Data Protection](https://developer.apple.com/documentation/uikit/core_app/protecting_the_user_s_privacy/encrypting_your_app_s_files).
+
+- Do not use `coder.decodeObject(forKey:)` to decode objects from the cache. Instead, use `cache.getObject(forKey:)` to retrieve objects from the cache.
+
+> This is because `coder.decodeObject(forKey:)` returns an optional object, which can be `nil`. If you try to decode a `nil` object, you will get a `nil` object. This is not what you want. Instead, you should use `cache.getObject(forKey:)` to retrieve objects from the cache. This method returns an optional object, which can be `nil`. If you try to retrieve a `nil` object, you will get a `nil` object. This is what you want.
  
 
 ## License
@@ -90,7 +118,3 @@ If you have any ideas, suggestions, or bug reports, please open an issue or subm
 ## Acknowledgements
 
 SwiftCacher is inspired by the need for a simple and efficient caching mechanism in Swift projects. It aims to provide an easy-to-use solution for storing and retrieving objects with persistence.
-
-
-
-
